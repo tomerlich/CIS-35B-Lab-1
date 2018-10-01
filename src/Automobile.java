@@ -12,11 +12,25 @@ public class Automobile {
 		public String featureName, description;
 		public int costChange;
 		
+		//Default constructor sets values to null
 		public Feature() {
+			featureName = new String();
+			description = new String();
+			costChange =  0;
 			
+			return;
 		}
 		
-		public String getFeatureName() {
+		//Constructor for setting values
+		public Feature(String name, String description, int change) {
+			this.featureName = name;
+			this.description = description;
+			this.costChange = change;
+			
+			return;
+		}
+		
+ 		public String getFeatureName() {
 			return this.featureName;
 		}
 		
@@ -30,19 +44,25 @@ public class Automobile {
 		
 		public void setFeatureName(String name) {
 			this.featureName = name;
+			
+			return;
 		}
 		
 		public void setDescription(String description) {
 			this.description = description;
+			
+			return;
 		}
 		
 		public void setCostChange(int change) {
 			this.costChange = change;
+			
+			return;
 		}
 	}
 
 	public Automobile() {
-
+		
 	}
 
 }
