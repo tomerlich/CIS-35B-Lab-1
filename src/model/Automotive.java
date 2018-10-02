@@ -1,5 +1,7 @@
 package model;
 
+import model.OptionSet.Option;
+
 public class Automotive {
 	private String name;
 	private float basePrice;
@@ -69,6 +71,7 @@ public class Automotive {
 	}
 	
 	public void setOption(int indexOptionSet, int indexOption, Option option) {
-		this.opset[indexOptionSet].getOpt()[indexOption] = option;
+		this.opset[indexOptionSet].setOpt(indexOption, option);
 	}
+
 }

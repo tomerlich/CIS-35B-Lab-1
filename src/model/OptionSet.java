@@ -3,13 +3,28 @@ package model;
 class OptionSet{
 	private Option opt[];
 	private String name;
+	
+	class Option{
+		private String name;
+		private float price;
 			
-	protected OptionSet(){
+		Option(){
+			this.name = null;
+			this.price = 0;
+		}
+		
+		Option(String name, float price){
+			this.name = name;
+			this.price = price;
+		}
+	}
+			
+	OptionSet(){
 		this.opt = null;
 		this.name = null;
 	}
 			
-	protected OptionSet(String setName, int setSize){
+	OptionSet(String setName, int setSize){
 		this.opt = new Option[setSize];
 		this.name = setName;
 				
@@ -18,8 +33,8 @@ class OptionSet{
 		}
 	}	
 	
-	protected Option[] getOpt() {
-		return this.opt;
-		
+	protected void setOpt(int index, Option option) {
+		this.opt[index] = option;
 	}
+	
 }
