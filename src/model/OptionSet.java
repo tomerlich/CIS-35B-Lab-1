@@ -1,6 +1,5 @@
 package model;
 
-//Inner class for the OptionSet contained in Automotive.
 class OptionSet{
 	private Option opt[];
 	private String name;
@@ -18,4 +17,9 @@ class OptionSet{
 			opt[i] = new Option();
 		}
 	}	
+	
+	protected Option[] getOpt() {
+		return this.opt;
+		
+	}
 }

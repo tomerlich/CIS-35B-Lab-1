@@ -32,7 +32,7 @@ public class Automotive {
  */
 	
 /*
- *  Getters/Setters-------------------------------------------------------------
+ * Getters/Setters--------------------------------------------------------------
  */
 	public String getName() {
 		return this.name;
@@ -49,5 +49,26 @@ public class Automotive {
 	public OptionSet[] getAllOptionSet() {
 		return this.opset;
 	}
-
+	
+	public void setName(String name) {
+		this.name =  name;
+	}
+	
+	public void setBasePrice(float price) {
+		this.basePrice = price;
+	}
+	
+	public void setAllOptionSets(OptionSet[] opset) {
+		for(int i = 0; i < this.opset.length; i++) {
+			this.opset[i] = opset[i];
+		}
+	}
+	
+	public void setOptionSet(int index, OptionSet opset) {
+		this.opset[index] = opset;
+	}
+	
+	public void setOption(int indexOptionSet, int indexOption, Option option) {
+		this.opset[indexOptionSet].getOpt()[indexOption] = option;
+	}
 }
