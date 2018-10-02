@@ -54,4 +54,15 @@ class OptionSet{
 	protected String getOptName(int index) {
 		return this.opt[index].name;
 	}
+	
+
+	protected void delete() {
+		this.opt = null;
+		this.name = null;
+	}
+
+	protected void deleteOpt(int optionDeleteIndex) {
+		this.opt[optionDeleteIndex].name = null;
+		this.opt[optionDeleteIndex].price = 0;
+	}
 }

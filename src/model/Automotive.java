@@ -111,4 +111,17 @@ public class Automotive {
 		this.opset[indexOptionSet].setOpt(indexOption, option);
 	}
 
+	// Delete all an OptionSet from an automobile given the set name
+	public void deleteOptionSet(String name) {
+		int deleteIndex = this.findOptionSet(name);
+		this.opset[deleteIndex].delete();
+	}
+
+	// Delete all an Option from a OptionSet given the set and option name
+	public void deleteOption(String setName, String optionName) {
+		int setDeleteIndex = this.findOptionSet(setName);
+		int optionDeleteIndex = this.findOption(setName, optionName);
+		
+		this.opset[setDeleteIndex].deleteOpt(optionDeleteIndex);
+	}
 }
