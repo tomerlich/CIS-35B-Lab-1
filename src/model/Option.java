@@ -1,14 +1,14 @@
 package model;
 
 //Inner class for the option data type contained in OptionSet.
-	class Option{
-		protected String name;
-		protected String description;
-		protected float price;
+class Option{
+	private String name;
+	private String description;
+	private float price;
 		
-		Option(){
-			name = null;
-			description = null;
-			price = 0;
-		}
+	protected Option(){
+		this.name = null;
+		this.description = null;
+		this.price = 0;
 	}
+}
