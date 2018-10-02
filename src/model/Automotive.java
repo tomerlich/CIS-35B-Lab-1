@@ -98,17 +98,14 @@ public class Automotive {
 
 	// Change the value of a single OptionSet in opset using the name to find the
 	// index of a given set
-	public void setOptionSet(String name, OptionSet opset) {
-		int index = this.findOptionSet(name);
+	public void setOptionSet(int index, OptionSet opset) {
 		this.opset[index] = opset;
 	}
 
 	// Change the value of a particular option in opt in opset using the names of
 	// the option and set to find the indexes
-	public void setOption(String setName, String optionName, Option option) {
-		int indexOptionSet = this.findOptionSet(setName);
-		int indexOption = this.findOption(setName, optionName);
-		this.opset[indexOptionSet].setOpt(indexOption, option);
+	public void setOption(int setIndex, int optionIndex, Option option) {
+		this.opset[setIndex].setOpt(optionIndex, option);
 	}
 
 	// Delete all an OptionSet from an automobile given the set name
@@ -123,5 +120,18 @@ public class Automotive {
 		int optionDeleteIndex = this.findOption(setName, optionName);
 		
 		this.opset[setDeleteIndex].deleteOpt(optionDeleteIndex);
+	}
+	
+	public void updateOptionSet(String setName, OptionSet newSet) {
+		int index = this.findOptionSet(setName);
+		this.setOptionSet(index, newSet);
+	}
+	
+	public void updateOption(String setName, String optionName, Option newOption) {
+		int setIndex = this.findOptionSet(setName);
+		int optionIndex = this.findOption(setName, optionName);
+		
+		this.setOption(setIndex, optionIndex, newOption);
+		
 	}
 }
