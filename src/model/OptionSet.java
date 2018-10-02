@@ -10,13 +10,22 @@ class OptionSet{
 			
 		Option(){
 			this.name = null;
-			this.price = 0;
+			this.setPrice(0);
 		}
 		
 		Option(String name, float price){
 			this.name = name;
+			this.setPrice(price);
+		}
+
+		protected float getPrice() {
+			return this.price;
+		}
+
+		protected void setPrice(float price) {
 			this.price = price;
 		}
+		
 	}
 			
 	OptionSet(){
@@ -32,9 +41,17 @@ class OptionSet{
 			opt[i] = new Option();
 		}
 	}	
+
+
+	protected String getName() {
+		return this.name;
+	}
 	
 	protected void setOpt(int index, Option option) {
 		this.opt[index] = option;
 	}
 	
+	protected String getOptName(int index) {
+		return this.opt[index].name;
+	}
 }

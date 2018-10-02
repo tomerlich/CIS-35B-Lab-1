@@ -7,9 +7,6 @@ public class Automotive {
 	private float basePrice;
 	private OptionSet opset[];
 
-/*
- * Constructors-----------------------------------------------------------------
- */
 	// Default constructor.
 	public Automotive() {
 		this.opset = null;
@@ -29,48 +26,88 @@ public class Automotive {
 		}
 
 	}
-/*
- * End Constructors-------------------------------------------------------------
- */
-	
-/*
- * Getters/Setters--------------------------------------------------------------
- */
+
+	// Get the name of the automotive
 	public String getName() {
 		return this.name;
 	}
-	
+
+	// Get the Base Price of the automotive
 	public float getBasePrice() {
 		return this.basePrice;
 	}
-	
-	public OptionSet getOptionSet(int index){
+
+	// Get one OptionSet from opset[] knowing the index.
+	public OptionSet getOptionSet(int index) {
 		return this.opset[index];
 	}
-	
+
+	// Get the entire opset[] array
 	public OptionSet[] getAllOptionSet() {
 		return this.opset;
 	}
-	
-	public void setName(String name) {
-		this.name =  name;
+
+	// Find the index for an option set knowing the name of the set
+	public int findOptionSet(String search) {
+		boolean optionSetFound = false;
+		int i = 0;
+		do {
+			if (this.opset[i].getName() == search) {
+				optionSetFound = true;
+			} else
+				i++;
+		} while (optionSetFound == false);
+
+		return i;
 	}
-	
+
+	// Find the index for a specific option knowing both the name of the set and the
+	// option
+	public int findOption(String setName, String search) {
+		boolean optionFound = false;
+		int i = 0, j = this.findOptionSet(setName);
+
+		do {
+			if (this.opset[j].getOptName(i) == search)
+				optionFound = true;
+			else
+				i++;
+		} while (optionFound == false);
+
+		return i;
+	}
+
+	// Change the name of an automobile will need to be called knowing the index of
+	// the automobile
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	// Change the base price of an automobile will need to be called knowing the
+	// index of the automobile
 	public void setBasePrice(float price) {
 		this.basePrice = price;
 	}
-	
+
+	// Change all the values of for the opset[] for a given automobile
 	public void setAllOptionSets(OptionSet[] opset) {
-		for(int i = 0; i < this.opset.length; i++) {
+		for (int i = 0; i < this.opset.length; i++) {
 			this.opset[i] = opset[i];
 		}
 	}
-	
-	public void setOptionSet(int index, OptionSet opset) {
+
+	// Change the value of a single OptionSet in opset using the name to find the
+	// index of a given set
+	public void setOptionSet(String name, OptionSet opset) {
+		int index = this.findOptionSet(name);
 		this.opset[index] = opset;
 	}
-	
-	public void setOption(int indexOptionSet, int indexOption, Option option) {
+
+	// Change the value of a particular option in opt in opset using the names of
+	// the option and set to find the indexes
+	public void setOption(String setName, String optionName, Option option) {
+		int indexOptionSet = this.findOptionSet(setName);
+		int indexOption = this.findOption(setName, optionName);
 		this.opset[indexOptionSet].setOpt(indexOption, option);
 	}
 
