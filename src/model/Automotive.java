@@ -37,6 +37,12 @@ public class Automotive {
 		return this.basePrice;
 	}
 
+	// Because the method for getName in optionSet is protected we will us this to
+	// make publicly accessible way to get this name
+	public String getOptionSetName(int index) {
+		return opset[index].getName();
+	}
+	
 	// Get one OptionSet from opset[] knowing the index.
 	public OptionSet getOptionSet(int index) {
 		return this.opset[index];
@@ -122,16 +128,24 @@ public class Automotive {
 		this.opset[setDeleteIndex].deleteOpt(optionDeleteIndex);
 	}
 	
+	// Update an OptionSet using the name of the OptionSet to find the index
 	public void updateOptionSet(String setName, OptionSet newSet) {
 		int index = this.findOptionSet(setName);
 		this.setOptionSet(index, newSet);
 	}
 	
+	// Update an Option using the names of the OptionSet and Option
+	// to find the index
 	public void updateOption(String setName, String optionName, Option newOption) {
 		int setIndex = this.findOptionSet(setName);
 		int optionIndex = this.findOption(setName, optionName);
 		
 		this.setOption(setIndex, optionIndex, newOption);
+		
+	}
+
+	// Each class should have its own print function.
+	public void print() {
 		
 	}
 }

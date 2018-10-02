@@ -42,7 +42,6 @@ class OptionSet{
 		}
 	}	
 
-
 	protected String getName() {
 		return this.name;
 	}
@@ -51,11 +50,16 @@ class OptionSet{
 		this.opt[index] = option;
 	}
 	
+	protected void setAllOpt(Option[] opt) {
+		for (int i = 0; i < this.opt.length; i++) {
+			this.opt[i] = opt[i];
+		}
+	}
+	
 	protected String getOptName(int index) {
 		return this.opt[index].name;
 	}
 	
-
 	protected void delete() {
 		this.opt = null;
 		this.name = null;
