@@ -74,7 +74,7 @@ public class Automotive {
 		int i = 0, j = this.findOptionSet(setName);
 
 		do {
-			if (this.opset[j].getOptName(i) == search)
+			if (this.opset[j].getOpt()[i].getName() == search)
 				optionFound = true;
 			else
 				i++;
@@ -125,7 +125,7 @@ public class Automotive {
 		int setDeleteIndex = this.findOptionSet(setName);
 		int optionDeleteIndex = this.findOption(setName, optionName);
 
-		this.opset[setDeleteIndex].deleteOpt(optionDeleteIndex);
+		this.opset[setDeleteIndex].getOpt()[optionDeleteIndex].deleteOpt();
 	}
 
 	// Update an OptionSet using the name of the OptionSet to find the index
@@ -152,8 +152,8 @@ public class Automotive {
 		for (int i = 0; i < this.opset.length; i++) {
 			objectString.append("\n").append(this.opset[i].getName());
 			for (int j = 0; j < this.opset[i].getOpt().length; j++) {
-				objectString.append("\n").append(this.opset[i].getOptName(j));
-				objectString.append(" New Price:$").append(this.basePrice + this.opset[i].getOptPrice(j));
+				objectString.append("\n").append(this.opset[i].getOpt()[j].getName());
+				objectString.append(" Option Price:$").append(this.opset[i].getOpt()[j].getPrice());
 			}
 		}
 
