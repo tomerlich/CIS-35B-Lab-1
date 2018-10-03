@@ -58,12 +58,12 @@ class OptionSet {
 	}
 
 	// Constructor that initializes values
-	OptionSet(String setName, int setSize) {
-		this.opt = new Option[setSize];
+	OptionSet(String setName, int setSize, String[] optionNames, float[] optionPrices) {
 		this.name = setName;
+		this.opt = new Option[setSize];
 
 		for (int i = 0; i < opt.length; i++) {
-			opt[i] = new Option();
+			opt[i] = new Option(optionNames[i], optionPrices[i]);
 		}
 	}
 

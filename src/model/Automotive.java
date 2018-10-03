@@ -14,15 +14,18 @@ public class Automotive {
 		this.basePrice = 0;
 	}
 
-	// Constructor that sets up data.
-	public Automotive(int size, String name, float price) {
-		this.opset = new OptionSet[size];
-		this.name = name;
-		this.basePrice = 0;
+	// Constructor that sets up data because we are also creating an array of
+	// OptionSets and therefore we are creating options we need parameters for their
+	// constructors.
+	public Automotive(int sizeOptionSet, String automotiveName, float price, String[] optionSetNames, int[] sizeOptions,
+			String[] optionNames, float[] optionPrices) {
+		this.name = automotiveName;
+		this.opset = new OptionSet[sizeOptionSet];
+		this.basePrice = price;
 
 		// To avoid nullPtr errors we use this for loop.
 		for (int i = 0; i < opset.length; i++) {
-			opset[i] = new OptionSet();
+			opset[i] = new OptionSet(optionSetNames[i], sizeOptions[i], optionNames, optionPrices);
 		}
 
 	}
