@@ -29,16 +29,16 @@ class OptionSet{
 	}
 			
 	OptionSet(){
-		this.opt = null;
+		this.setOpt(null);
 		this.name = null;
 	}
 			
 	OptionSet(String setName, int setSize){
-		this.opt = new Option[setSize];
+		this.setOpt(new Option[setSize]);
 		this.name = setName;
 				
-		for(int i = 0; i < opt.length; i++) {
-			opt[i] = new Option();
+		for(int i = 0; i < getOpt().length; i++) {
+			getOpt()[i] = new Option();
 		}
 	}	
 
@@ -51,22 +51,35 @@ class OptionSet{
 	}
 	
 	protected void setAllOpt(Option[] opt) {
-		for (int i = 0; i < this.opt.length; i++) {
-			this.opt[i] = opt[i];
+		for (int i = 0; i < this.getOpt().length; i++) {
+			this.getOpt()[i] = opt[i];
 		}
 	}
 	
 	protected String getOptName(int index) {
-		return this.opt[index].name;
+		return this.getOpt()[index].name;
+	}
+
+	protected float getOptPrice(int index) {
+		return this.getOpt()[index].price;
+	}
+	
+	protected Option[] getOpt() {
+		return this.opt;
+	}
+
+	protected void setOpt(Option opt[]) {
+		this.opt = opt;
 	}
 	
 	protected void delete() {
-		this.opt = null;
+		this.setOpt(null);
 		this.name = null;
 	}
 
 	protected void deleteOpt(int optionDeleteIndex) {
-		this.opt[optionDeleteIndex].name = null;
-		this.opt[optionDeleteIndex].price = 0;
+		this.getOpt()[optionDeleteIndex].name = null;
+		this.getOpt()[optionDeleteIndex].price = 0;
 	}
+
 }

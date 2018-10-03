@@ -42,7 +42,7 @@ public class Automotive {
 	public String getOptionSetName(int index) {
 		return opset[index].getName();
 	}
-	
+
 	// Get one OptionSet from opset[] knowing the index.
 	public OptionSet getOptionSet(int index) {
 		return this.opset[index];
@@ -124,28 +124,39 @@ public class Automotive {
 	public void deleteOption(String setName, String optionName) {
 		int setDeleteIndex = this.findOptionSet(setName);
 		int optionDeleteIndex = this.findOption(setName, optionName);
-		
+
 		this.opset[setDeleteIndex].deleteOpt(optionDeleteIndex);
 	}
-	
+
 	// Update an OptionSet using the name of the OptionSet to find the index
 	public void updateOptionSet(String setName, OptionSet newSet) {
 		int index = this.findOptionSet(setName);
 		this.setOptionSet(index, newSet);
 	}
-	
+
 	// Update an Option using the names of the OptionSet and Option
 	// to find the index
 	public void updateOption(String setName, String optionName, Option newOption) {
 		int setIndex = this.findOptionSet(setName);
 		int optionIndex = this.findOption(setName, optionName);
-		
+
 		this.setOption(setIndex, optionIndex, newOption);
-		
+
 	}
 
-	// Each class should have its own print function.
-	public void print() {
-		
+	// Will override to string so i can write my own print for the class automotive
+	public String toString() {
+		StringBuilder objectString = new StringBuilder(this.name);
+		objectString.append(" Base Price:$").append(this.basePrice);
+
+		for (int i = 0; i < this.opset.length; i++) {
+			objectString.append("\n").append(this.opset[i].getName());
+			for (int j = 0; j < this.opset[i].getOpt().length; j++) {
+				objectString.append("\n").append(this.opset[i].getOptName(j));
+				objectString.append(" New Price:$").append(this.basePrice + this.opset[i].getOptPrice(j));
+			}
+		}
+
+		return objectString.toString();
 	}
 }
